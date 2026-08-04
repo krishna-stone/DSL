@@ -6,20 +6,17 @@ void insert(int **arr, int*size, int element, int position){
 		printf("!!Invalid Position!!\n");
 		return;
 	}
-
 	int *newArr = realloc(*arr, (*size + 1) * sizeof(int)); 
 	if (!newArr) {
 	        printf("Memory allocation failed!\n");
 	        return;
 	    }
-	    *arr = newArr;
-	
-	    for (int i = *size; i > position; i--) {
-	        (*arr)[i] = (*arr)[i - 1];
-	    }
-	
-	    (*arr)[position] = element;
-	    (*size)++;
+	*arr = newArr;
+	for (int i = *size; i > position; i--) {
+	    (*arr)[i] = (*arr)[i - 1];
+	}
+	(*arr)[position] = element;
+	(*size)++;
 }
 
 void delete(int **arr, int *size, int position) {
@@ -117,6 +114,9 @@ int main() {
 			case 4:
 				traverseArray(arr, n);
 				printf("\n");
+				break;
+			case 5:
+				return 1;
 				break;
 			default :
 				printf("Error\n");
